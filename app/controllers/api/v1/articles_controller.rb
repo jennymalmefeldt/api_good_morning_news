@@ -4,4 +4,10 @@ class Api::V1::ArticlesController < ApplicationController
 
     render json: articles, each_serializer: ArticlesIndexSerializer
   end
+
+  def show
+    article = Article.find(params[:id])
+
+    render json: article, serializer: ArticleShowSerializer 
+  end
 end

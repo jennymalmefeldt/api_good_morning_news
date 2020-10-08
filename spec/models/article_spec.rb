@@ -11,7 +11,7 @@ RSpec.describe Article, type: :model do
   describe "Validations" do
     it { is_expected.to validate_presence_of :title }
     it { is_expected.to validate_presence_of :teaser }
-    it { is_expected.to have_db_column :content }
+    it { is_expected.to validate_presence_of :content }
   end
 
   describe "Factory" do
