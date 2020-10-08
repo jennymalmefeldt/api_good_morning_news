@@ -1,5 +1,8 @@
 class Api::V1::ArticlesController < ApplicationController
   def index
-    articles = 
+    articles = Article.all
+
+    render json: { articles: articles  }
+    # binding.pry
   end
 end
