@@ -24,9 +24,5 @@ RSpec.describe "GET /api/v1/articles", type: :request do
     it "is expected to return a specific article teaser" do
       expect(response_json["articles"].second["teaser"]).to eq "MyText"
     end
-
-    it "is expected not to return an articles text" do
-      expect(response_json["articles"].second["text"]).to eq nil
-    end
   end
 end

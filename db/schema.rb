@@ -18,7 +18,6 @@ ActiveRecord::Schema.define(version: 2020_10_07_213224) do
   create_table "articles", force: :cascade do |t|
     t.string "title"
     t.text "teaser"
-    t.text "text"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

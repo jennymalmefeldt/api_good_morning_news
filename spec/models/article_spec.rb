@@ -5,13 +5,11 @@ RSpec.describe Article, type: :model do
     it { is_expected.to have_db_column :id }
     it { is_expected.to have_db_column :title }
     it { is_expected.to have_db_column :teaser }
-    it { is_expected.to have_db_column :text }
   end
 
   describe "Validations" do
     it { is_expected.to validate_presence_of :title }
     it { is_expected.to validate_presence_of :teaser }
-    it { is_expected.to validate_presence_of :text }
   end
 
   describe "Factory" do
