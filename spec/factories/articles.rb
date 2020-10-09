@@ -3,6 +3,6 @@ FactoryBot.define do
     title { 'MyString' }
     teaser { 'MyText' }
     content { 'MyContent' }
-    category { 'MyCategory' }
+    category { 'sports' }
   end
 end

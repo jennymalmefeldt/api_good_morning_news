@@ -9,7 +9,7 @@ RSpec.describe 'GET /api/v1/articles', type: :request do
     before do
       get '/api/v1/articles',
           params: {
-            category: 'MyCategory'
+            category: 'sports'
           }
     end
 
@@ -18,7 +18,7 @@ RSpec.describe 'GET /api/v1/articles', type: :request do
     end
 
     it 'should respond with article category' do
-      expect(response_json['articles'].first['category']).to eq 'MyCategory'
+      expect(response_json['articles'].first['category']).to eq 'sports'
     end
 
     it "is expected to return 3 articles" do
