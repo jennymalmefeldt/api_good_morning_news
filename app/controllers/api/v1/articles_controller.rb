@@ -14,6 +14,6 @@ class Api::V1::ArticlesController < ApplicationController
   private
 
   def render_active_record_error
-    render json: { error_message: 'Sorry we can not find that article' }, status: 404
+    render json: { error_message: 'Sorry we can not find that article' }, status: :not_found
   end
 end
