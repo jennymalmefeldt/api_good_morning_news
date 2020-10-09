@@ -1,3 +1,3 @@
 class ArticlesIndexSerializer < ActiveModel::Serializer
-  attributes :id, :title, :teaser
+  attributes :id, :title, :teaser, :category
 end
