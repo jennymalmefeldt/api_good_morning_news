@@ -8,12 +8,12 @@ class Api::V1::ArticlesController < ApplicationController
                else
                  Article.all
                end
-    render json: articles, each_serializer: ArticlesIndexSerializer
+    render json: articles, each_serializer: Articles::IndexSerializer
   end
 
   def show
     article = Article.find(params[:id])
-    render json: article, serializer: ArticleShowSerializer
+    render json: article, serializer: Articles::ShowSerializer
   end
 
   private
