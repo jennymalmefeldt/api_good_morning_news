@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Api::V1::ArticlesController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :render_active_record_error
   before_action :check_valid_category, only: :index, if: :searching_for_categoriezed_content
@@ -25,7 +23,9 @@ class Api::V1::ArticlesController < ApplicationController
   end
 
   def check_valid_category
-    render json: { error_message: 'Sorry, we can\'t find that category' }, status: :not_found unless Article.categories.keys.include?(params['category'])
+    unless Article.categories.keys.include?(params['category'])
+      render json: { error_message: 'Sorry, we can\'t find that category' }, status: :not_found
+    end
   end
 
   def searching_for_categoriezed_content
