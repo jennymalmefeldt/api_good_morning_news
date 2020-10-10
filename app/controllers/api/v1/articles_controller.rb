@@ -1,9 +1,9 @@
 class Api::V1::ArticlesController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :render_active_record_error
-  before_action :check_valid_category, only: :index, if: :searching_for_categoriezed_content
+  before_action :valid_category?, only: :index, if: :selecting_category
 
   def index
-    articles = if searching_for_categoriezed_content
+    articles = if selecting_category
                  Article.where(category: params['category'])
                else
                  Article.all
@@ -22,13 +22,13 @@ class Api::V1::ArticlesController < ApplicationController
     render json: { error_message: 'Sorry we can not find that article' }, status: :not_found
   end
 
-  def check_valid_category
+  def valid_category?
     unless Article.categories.keys.include?(params['category'])
       render json: { error_message: 'Sorry, we can\'t find that category' }, status: :not_found
     end
   end
 
-  def searching_for_categoriezed_content
+  def selecting_category
     !params['category'].nil?
   end
 end
