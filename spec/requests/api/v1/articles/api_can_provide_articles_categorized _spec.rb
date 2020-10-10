@@ -28,9 +28,9 @@ RSpec.describe "GET /api/v1/articles", type: :request do
 
   describe "unsuccessfully" do
     before do
-      get "/api/v1/articles",
+      get "/api/v1/articles/",
           params: {
-            category: 10,
+            category: "invalid"
           }
     end
 

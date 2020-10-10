@@ -8,6 +8,8 @@ class Api::V1::ArticlesController < ApplicationController
       articles = Article.all
     end
     render json: articles, each_serializer: ArticlesIndexSerializer
+  rescue
+    render json: { error_message: "Sorry we can not find that article" }, status: :not_found
   end
 
   def show
