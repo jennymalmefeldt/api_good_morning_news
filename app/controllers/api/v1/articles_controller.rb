@@ -2,7 +2,11 @@ class Api::V1::ArticlesController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :render_active_record_error
 
   def index
-    articles = Article.all
+    if params['category']
+      articles = Article.where(category: params['category'])
+    else
+      articles = Article.all
+    end
     render json: articles, each_serializer: ArticlesIndexSerializer
   end
 
