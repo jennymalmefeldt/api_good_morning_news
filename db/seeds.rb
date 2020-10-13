@@ -1,4 +1,4 @@
-articles = Article.create(
+Article.create(
   [
     {
       title: 'Coronavirus in Sweden',
