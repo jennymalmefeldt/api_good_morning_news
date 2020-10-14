@@ -4,5 +4,6 @@ FactoryBot.define do
     teaser { 'MyText' }
     content { 'MyContent' }
     category { 'sports' }
+    association :journalist, factory: :user
   end
 end

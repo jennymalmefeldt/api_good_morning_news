@@ -15,7 +15,7 @@ RSpec.describe 'POST /api/v1/admin/articles', type: :request do
     end
 
     it 'is expected to respond with create status' do
-      expect(response).to have_http_status :create
+      expect(response).to have_http_status :no_content
     end
 
     it 'is expected to return success message' do
