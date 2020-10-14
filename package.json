@@ -1,0 +1,8 @@
+{
+  "name": "api_good_morning_news",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/grconnor/api_good_morning_news.git",
+  "author": "<connorroelofsen15@gmail.com>",
+  "license": "MIT"
+}
