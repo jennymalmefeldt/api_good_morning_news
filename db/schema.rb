@@ -22,7 +22,8 @@ ActiveRecord::Schema.define(version: 2020_10_14_171538) do
     t.datetime "updated_at", precision: 6, null: false
     t.text "content"
     t.integer "category"
-    t.integer "journalist_id"
+    t.bigint "journalist_id"
+    t.index ["journalist_id"], name: "index_articles_on_journalist_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -53,4 +54,5 @@ ActiveRecord::Schema.define(version: 2020_10_14_171538) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "articles", "users", column: "journalist_id"
 end

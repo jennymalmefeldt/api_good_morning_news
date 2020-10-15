@@ -1,5 +1,5 @@
 RSpec.describe "POST /api/v1/admin/articles", type: :request do
-  let!(:journalist) { create(:user, role: "journalist") }
+  let(:journalist) { create(:user, role: "journalist") }
   let(:journalist_credentials) { journalist.create_new_auth_token }
   let(:journalist_headers) { { HTTP_ACCEPT: "application/json" }.merge!(journalist_credentials) }
 
@@ -41,18 +41,39 @@ RSpec.describe "POST /api/v1/admin/articles", type: :request do
                title: "My title",
                teaser: "My teaser",
                content: "",
-                category: "sports"
+               category: "sports",
              },
            },
            headers: journalist_headers
     end
 
     it "is expected to reurn a response status" do
-      expect(response).to have_http_status 422
+      expect(response).to have_http_status :unprocessable_entity
     end
 
     it "is expected to return an error message" do
       expect(response_json["message"]).to eq "Content can't be blank"
+    end
+  end
+
+  describe "unauthozired user" do
+    let!(:unauthozired_user) { create(:user, role: "registered") }
+    let(:unauthozired_user_credentials) { unauthozired_user.create_new_auth_token }
+    let(:unauthozired_headers) { { HTTP_ACCEPT: "application/json" }.merge!(unauthozired_user_credentials) }
+    before do
+      post "/api/v1/admin/articles",
+           params: { article: {
+             title: "My title",
+             teaser: "My teaser",
+             content: "My content",
+             category: "sports",
+           } }, headers: unauthozired_headers
+    end
+    it "is expected to return unauthozired response status" do
+      expect(response).to have_http_status :unauthorized
+    end
+    it "is expected to return error message" do
+      expect(response_json["message"]).to eq "Sorry, you don't have the necessary permission"
     end
   end
 end

@@ -3,6 +3,6 @@ class ApplicationController < ActionController::API
 
   def error_message(johan)
     error_message = johan.full_messages.to_sentence
-    render json: { message: error_message }, status: 422
+    render json: { message: error_message }, status: :unprocessable_entity
   end
 end

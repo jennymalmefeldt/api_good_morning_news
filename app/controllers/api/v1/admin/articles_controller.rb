@@ -25,6 +25,6 @@ class Api::V1::Admin::ArticlesController < ApplicationController
   end
 
   def restrict_access
-    render json: { message: "Sorry, you don't have the necessary permission" }
+    render json: { message: "Sorry, you don't have the necessary permission" }, status: :unauthorized
   end
 end

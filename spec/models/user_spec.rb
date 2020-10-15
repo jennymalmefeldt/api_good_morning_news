@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  it 'should have a valid factory' do
+  it 'is expected to have a valid factory' do
     expect(FactoryBot.create(:user)).to be_valid
   end
 
@@ -16,7 +16,7 @@ RSpec.describe User, type: :model do
     it { is_expected.to validate_presence_of :email }
     it { is_expected.to validate_confirmation_of :password }
 
-  context 'should not have an invalid email address' do
+  context 'is expected not to have an invalid email address' do
     emails = ['ayaf@ dt.com', '@example.com', 'test me @yao.com',
               'asaf@example', 'ddd@.d. .d', 'ddd@.d']
 
@@ -25,7 +25,7 @@ RSpec.describe User, type: :model do
     end
   end
 
-  context 'should have a valid email address' do
+  context 'is expected to have a valid email address' do
     emails = ['ayaf@dt.com', 'jenny@example.com', 'testme@yao.com',
               'asaf@example.com']
               
