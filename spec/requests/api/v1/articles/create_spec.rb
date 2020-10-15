@@ -1,21 +1,22 @@
 RSpec.describe 'POST /api/v1/admin/articles', type: :request do
-  let(:journalist){create(:user, role: "journalist")}
+  let!(:journalist){create(:user, role: "journalist")}
   let(:journalist_credentials){journalist.create_new_auth_token}
-  let(:journalist_headers) {{HTTP_ACCEPT: 'application/json'}.merge!(credentails)}
+  let(:journalist_headers) {{HTTP_ACCEPT: 'application/json'}.merge!(journalist_credentials)}
 
   describe 'successfully' do
     before do
       post '/api/v1/admin/articles',
-      params: {
+      params: {article: {
         title: "My title",
         teaser: "My teaser",
-        content: "My content"
-      },
-      headers: headers
+        content: "My content",
+        category: "sports"
+      }},
+      headers: journalist_headers
     end
 
     it 'is expected to respond with create status' do
-      expect(response).to have_http_status :no_content
+      expect(response).to have_http_status :ok
     end
 
     it 'is expected to return success message' do
