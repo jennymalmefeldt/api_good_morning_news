@@ -1,8 +1,8 @@
 class ApplicationController < ActionController::API
   include DeviseTokenAuth::Concerns::SetUserByToken
 
-  def error_message(johan)
-    error_message = johan.full_messages.to_sentence
+  def error_message(errors)
+    error_message = errors.full_messages.to_sentence
     render json: { message: error_message }, status: :unprocessable_entity
   end
 end

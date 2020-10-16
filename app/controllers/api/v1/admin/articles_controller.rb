@@ -8,11 +8,10 @@ class Api::V1::Admin::ArticlesController < ApplicationController
       render json: { message: "successfully saved" }
     else
       error_message(article.errors)
-     end
+    end
   end
 
   private
-
 
   def article_params
     params.require(:article).permit(:title, :teaser, :content, :category)
