@@ -50,8 +50,8 @@ RSpec.describe "GET /api/v1/articles", type: :request do
     before do
       get "/api/v1/articles/#{premium_article.id}"
     end
-    it "Visitor can only see 20 characters" do
-      expect(response_json["article"]["content"].length).to eq 20
+    it "Visitor can only see 100 characters" do
+      expect(response_json["article"]["content"].length).to eq 100
     end
   end
 end
