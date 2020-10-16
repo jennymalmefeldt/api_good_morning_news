@@ -1,8 +1,10 @@
 RSpec.describe "GET /api/v1/articles", type: :request do
-  let!(:journalist) { create(:user, role: "journalist") }
-  let!(:article) { create(:article, journalist_id: journalist.id) }
+  let!(:article) {
+    create(:article, premium: false,
+                     content: "On Wednesday of last we, we here at Newsroom 1 were informed that Thomas Ochman had bought a new car. And not just any car but a Berlingo. His son, Oliver, was reported to have shaken his head in sadness when he heard the news, questioning why his father needed another car. And yet, later that same day we also learned that Mr. Ochman wants a third car. And not just any car, but a blank that he found on Blocket. The big questions now are: will he get it and how will Oliver react?")
+  }
   let!(:premium_article) {
-    create(:article, premium: true, journalist_id: journalist.id, 
+    create(:article, premium: true,
                      content: "We are all mad here. That quote from the Mad Hatter in Alice in Wonderland has never been more true than now. We are experiencing a wave of maddness as the quarentine continues for people across the globe. People in Italy have been reported to actually talk to their neighbors, playing music for the street and even group calisthenics on the patio. These are indeed scary times. As we move forward into an uncertain future, we have got to wonder, what will the Italians do next.")
   }
 
@@ -27,8 +29,8 @@ RSpec.describe "GET /api/v1/articles", type: :request do
       expect(response_json["article"]["teaser"]).to eq "MyText"
     end
 
-    it "is expected to return a specific article content" do
-      expect(response_json["article"]["content"]).to eq "MyContent"
+    it "is expected see full content of a free article" do
+      expect(response_json["article"]["content"]).to eq "On Wednesday of last we, we here at Newsroom 1 were informed that Thomas Ochman had bought a new car. And not just any car but a Berlingo. His son, Oliver, was reported to have shaken his head in sadness when he heard the news, questioning why his father needed another car. And yet, later that same day we also learned that Mr. Ochman wants a third car. And not just any car, but a blank that he found on Blocket. The big questions now are: will he get it and how will Oliver react?"
     end
   end
 
@@ -50,7 +52,8 @@ RSpec.describe "GET /api/v1/articles", type: :request do
     before do
       get "/api/v1/articles/#{premium_article.id}"
     end
-    it "Visitor can only see 100 characters" do
+    it "Visitor can only see 100 characters of a premium article" do
+      binding.pry
       expect(response_json["article"]["content"].length).to eq 100
     end
   end
