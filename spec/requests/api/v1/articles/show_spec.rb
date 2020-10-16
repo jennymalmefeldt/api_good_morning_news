@@ -36,7 +36,7 @@ RSpec.describe "GET /api/v1/articles", type: :request do
 
   describe "unsuccessfully" do
     before do
-      get "/api/v1/articles/700"
+      get "/api/v1/articles/abc"
     end
 
     it "is expected to respond with not found status" do
