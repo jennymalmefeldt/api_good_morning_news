@@ -1,13 +1,12 @@
 RSpec.describe "GET /api/v1/articles", type: :request do
-  let!(:journalist) { create(:user, role: "journalist") }
   let!(:sports_articles) do
     3.times do
-      create(:article, category: "sports", journalist_id: journalist.id)
+      create(:article, category: "sports")
     end
   end
   let!(:non_sports_articles) do
     3.times do
-      create(:article, category: "business", journalist_id: journalist.id)
+      create(:article, category: "business")
     end
   end
 
