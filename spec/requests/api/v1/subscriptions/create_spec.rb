@@ -1,4 +1,11 @@
+require "stripe_mock"
 RSpec.describe "POST /api/v1/subscriptions", type: :request do
+  let(:stripe_helper) { StripeMock.create_test_helper }
+  let(:valid_stripe_token) { stripe_helper.generate_card_token }
+
+  before(:each) { StripeMock.start }
+  after(:each) { StripeMock.stop }
+
   let(:user) { create(:user) }
   let(:credentials) { user.create_new_auth_token }
   let(:headers) { { HTTP_ACCEPT: "application/json" }.merge!(credentials) }
@@ -7,7 +14,7 @@ RSpec.describe "POST /api/v1/subscriptions", type: :request do
     before do
       post "/api/v1/subscriptions",
            params: {
-             stripeToken: "efaefq3rq2rq",
+             stripeToken: valid_stripe_token,
            },
            headers: headers
     end
@@ -20,7 +27,8 @@ RSpec.describe "POST /api/v1/subscriptions", type: :request do
       expect(response_json["message"]).to eq "subscribed"
     end
 
-    it 'is expected to make user a subscriber' do
+    it "is expected to make user a subscriber" do
       expect(user.subscriber?).to eq true
+    end
   end
 end
