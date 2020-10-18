@@ -27,7 +27,7 @@ class Api::V1::SubscriptionsController < ApplicationController
 
   def get_customer(stripe_token)
     customer = Stripe::Customer.list(email: current_user.email).data.first
-    customer ||= Stripe::Customer.create({ email: current_user.email, source: stripe_token })
+    customer ||= Stripe::Customer.create({ email: current_user.email, source: stripe_token, currency: 'sek' })
     customer.id
     # we are asking if the user exists. Run the line 15 and if it could not find anything, continue with the next line. || is an OR. In this line create a new customer. In the next return the customer id
   end
