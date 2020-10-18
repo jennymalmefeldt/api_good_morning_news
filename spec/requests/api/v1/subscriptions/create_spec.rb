@@ -57,7 +57,7 @@ RSpec.describe "POST /api/v1/subscriptions", type: :request do
              headers: headers
       end
       it "is expected to return 422 response status" do
-        expect(response.status).to eq 422 
+        expect(response.status).to eq 422
       end
 
       it "is expected to return success message" do
