@@ -24,7 +24,7 @@ RSpec.describe "POST /api/v1/subscriptions", type: :request do
   let(:credentials) { user.create_new_auth_token }
   let(:headers) { { HTTP_ACCEPT: "application/json" }.merge!(credentials) }
 
-  describe "successfully" do
+  describe "successfully subsciption created" do
     before do
       post "/api/v1/subscriptions",
            params: {
@@ -46,7 +46,7 @@ RSpec.describe "POST /api/v1/subscriptions", type: :request do
     end
   end
 
-  describe "unsuccessfully" do
+  describe "unsuccessfully subscription" do
     describe "credit card being declined" do
       before do
         StripeMock.prepare_card_error(:card_declined, :new_invoice)
