@@ -20,7 +20,7 @@ class Api::V1::SubscriptionsController < ApplicationController
       end
     rescue => error
       # if begin or get_customer brakes will always come here and not to else
-      binding.pry
+      render_stripe_error(error.message)
     end
   end
 
@@ -41,6 +41,6 @@ class Api::V1::SubscriptionsController < ApplicationController
   end
 
   def render_stripe_error(error)
-    render json: { message: "The subscription was not made. #{error}" }, status: 402
+    render json: { message: "The subscription was not made. #{error}" }, status: 422
   end
 end
