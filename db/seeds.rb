@@ -1,11 +1,6 @@
 Article.destroy_all
 User.destroy_all
-journalist = User.create(email: "journalist@mail.com", role: "journalist", password: "password")
-User.create(email: "registered@mail.com", role: "registered", password: "password")
-User.create(email: "subscriber@mail.com", role: "subscriber", password: "password")
-User.create(email: "user@mail.com", role: "registered", password: "password")
-User.create(email: "user1@mail.com", role: "registered", password: "password")
-User.create(email: "user2@mail.com", role: "registered", password: "password")
+
 Article.create(
   [
     {
