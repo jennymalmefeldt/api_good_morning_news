@@ -52,8 +52,8 @@ RSpec.describe "GET /api/v1/articles", type: :request do
     before do
       get "/api/v1/articles/#{premium_article.id}"
     end
-    it "Visitor can only see 100 characters of a premium article" do
-      expect(response_json["article"]["content"].length).to eq 100
+    it "Visitor can only see 300 characters of a premium article" do
+      expect(response_json["article"]["content"].length).to eq 300
     end
   end
 end
