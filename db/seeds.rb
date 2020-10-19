@@ -1,5 +1,6 @@
 Article.destroy_all
 User.destroy_all
+journalist = User.create(email: "journalist@mail.com", role: "journalist", password: "password")
 
 Article.create(
   [
