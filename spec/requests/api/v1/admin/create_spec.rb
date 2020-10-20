@@ -2,7 +2,7 @@ RSpec.describe "POST /api/v1/admin/articles", type: :request do
   let(:journalist) { create(:user, role: "journalist") }
   let(:journalist_credentials) { journalist.create_new_auth_token }
   let(:journalist_headers) { { HTTP_ACCEPT: "application/json" }.merge!(journalist_credentials) }
-  (:image) do
+  let(:image) do
   {
     type: 'image/png',
     encoder: 'name=iphone_picture',
