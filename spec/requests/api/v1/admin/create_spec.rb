@@ -5,7 +5,7 @@ RSpec.describe "POST /api/v1/admin/articles", type: :request do
   (:image) do
   {
     type: 'image/png',
-    encoder: 'name=iphone_picture.png:base64',
+    encoder: 'name=iphone_picture',
     data: 'hjdehjdhej',
     extension: 'png'
   }
