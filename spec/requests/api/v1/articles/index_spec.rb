@@ -1,7 +1,7 @@
 RSpec.describe "GET /api/v1/articles", type: :request do
   let!(:sports_articles) do
     3.times do
-      create(:article, category: "sports")
+      create(:article, :with_image, category: "sports")
     end
   end
   let!(:non_sports_articles) do
@@ -36,6 +36,10 @@ RSpec.describe "GET /api/v1/articles", type: :request do
 
     it "is expected to return 3 articles" do
       expect(response_json["articles"].count).to eq 3
+    end
+
+    it "is expected see return an image" do
+      expect(response_json["articles"].first).to include "image" 
     end
   end
 

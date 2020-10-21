@@ -1,3 +1,15 @@
 class Articles::IndexSerializer < ActiveModel::Serializer
-  attributes :id, :title, :teaser, :category
+  include Rails.application.routes.url_helpers
+  attributes :id, :title, :teaser, :category, :image
+
+  def image
+    return nil unless object.image.attached?
+    if Rails.env.test?
+      rails_blob_url(object.image)
+    else
+      return object.image.service_url
+    end
+  end
 end
+
+
