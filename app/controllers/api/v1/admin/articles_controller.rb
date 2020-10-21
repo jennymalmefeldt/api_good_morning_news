@@ -4,6 +4,7 @@ class Api::V1::Admin::ArticlesController < ApplicationController
 
   def create
     article = current_user.articles.create(article_params)
+    binding.pry
     if article.persisted? && attach_image(article)
       render json: { message: "successfully saved" }
     else
