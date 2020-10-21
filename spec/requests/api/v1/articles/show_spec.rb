@@ -1,11 +1,11 @@
 RSpec.describe "GET /api/v1/articles", type: :request do
   let!(:article) {
-    create(:article, premium: false,
-                     content: "On Wednesday of last we, we here at Newsroom 1 were informed that Thomas Ochman had bought a new car. And not just any car but a Berlingo. His son, Oliver, was reported to have shaken his head in sadness when he heard the news, questioning why his father needed another car. And yet, later that same day we also learned that Mr. Ochman wants a third car. And not just any car, but a blank that he found on Blocket. The big questions now are: will he get it and how will Oliver react?")
+    create(:article, :with_image, premium: false,
+                                  content: "On Wednesday of last we, we here at Newsroom 1 were informed that Thomas Ochman had bought a new car. And not just any car but a Berlingo. His son, Oliver, was reported to have shaken his head in sadness when he heard the news, questioning why his father needed another car. And yet, later that same day we also learned that Mr. Ochman wants a third car. And not just any car, but a blank that he found on Blocket. The big questions now are: will he get it and how will Oliver react?")
   }
   let!(:premium_article) {
-    create(:article, premium: true,
-                     content: "We are all mad here. That quote from the Mad Hatter in Alice in Wonderland has never been more true than now. We are experiencing a wave of maddness as the quarentine continues for people across the globe. People in Italy have been reported to actually talk to their neighbors, playing music for the street and even group calisthenics on the patio. These are indeed scary times. As we move forward into an uncertain future, we have got to wonder, what will the Italians do next.")
+    create(:article, :with_image, premium: true,
+                                  content: "We are all mad here. That quote from the Mad Hatter in Alice in Wonderland has never been more true than now. We are experiencing a wave of maddness as the quarentine continues for people across the globe. People in Italy have been reported to actually talk to their neighbors, playing music for the street and even group calisthenics on the patio. These are indeed scary times. As we move forward into an uncertain future, we have got to wonder, what will the Italians do next.")
   }
 
   describe "successfully" do
@@ -32,6 +32,10 @@ RSpec.describe "GET /api/v1/articles", type: :request do
     it "is expected see full content of a free article" do
       expect(response_json["article"]["content"]).to eq "On Wednesday of last we, we here at Newsroom 1 were informed that Thomas Ochman had bought a new car. And not just any car but a Berlingo. His son, Oliver, was reported to have shaken his head in sadness when he heard the news, questioning why his father needed another car. And yet, later that same day we also learned that Mr. Ochman wants a third car. And not just any car, but a blank that he found on Blocket. The big questions now are: will he get it and how will Oliver react?"
     end
+
+    it "is expected see return an image" do
+      expect(response_json["article"]).to include "image"
+    end
   end
 
   describe "unsuccessfully" do
@@ -54,6 +58,10 @@ RSpec.describe "GET /api/v1/articles", type: :request do
     end
     it "Visitor can only see 300 characters of a premium article" do
       expect(response_json["article"]["content"].length).to eq 300
+    end
+
+    it "is expected see return an image" do
+      expect(response_json["article"]).to include "image"
     end
   end
 end

@@ -1,4 +1,5 @@
 class Articles::ShowSerializer < ActiveModel::Serializer
+  include Rails.application.routes.url_helpers
   attributes :id, :title, :teaser, :content, :category, :premium, :image
 
   def content
