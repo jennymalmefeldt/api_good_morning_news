@@ -4,7 +4,6 @@ class Api::V1::Admin::ArticlesController < ApplicationController
 
   def create
     article = current_user.articles.create(article_params)
-    binding.pry
     if article.persisted? && attach_image(article)
       render json: { message: "successfully saved" }
     else
@@ -14,7 +13,7 @@ class Api::V1::Admin::ArticlesController < ApplicationController
 
   private
 
-  def attach_image
+  def attach_image(article)
     params_image = params[:article][:image]
     if params_image.present?
       DecodeService.attach_image(params_image, article.image)

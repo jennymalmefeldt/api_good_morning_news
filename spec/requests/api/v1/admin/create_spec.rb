@@ -3,15 +3,13 @@ RSpec.describe "POST /api/v1/admin/articles", type: :request do
   let(:journalist_credentials) { journalist.create_new_auth_token }
   let(:journalist_headers) { { HTTP_ACCEPT: "application/json" }.merge!(journalist_credentials) }
   let(:image) do
-  {
-    type: 'image/png',
-    encoder: 'name=iphone_picture',
-    data: 'hjdehjdhej',
-    extension: 'png'
-  }
-
+    {
+      type: "image/png",
+      encoder: "name=iphone_picture",
+      data: "hjdehjdhej",
+      extension: "png",
+    }
   end
-
 
   describe "successfully" do
     before do
@@ -22,7 +20,7 @@ RSpec.describe "POST /api/v1/admin/articles", type: :request do
              content: "My content",
              category: "sports",
              premium: false,
-             image: image
+             image: image,
            } },
            headers: journalist_headers
     end
