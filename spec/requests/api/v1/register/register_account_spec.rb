@@ -21,8 +21,7 @@ RSpec.describe "POST /api/v1/admin/sign_up", type: :request do
     end
   end
 
-  describe "Unsuccessfully register" do
-    context "with wrong password"
+  describe "Unsuccessfully register - with wrong password" do
     before do
       post "/api/v1/auth",
            params: {
@@ -42,4 +41,44 @@ RSpec.describe "POST /api/v1/admin/sign_up", type: :request do
     end
   end
 
+  describe "Unsuccessfully register - with invalid email" do
+    before do
+      post "/api/v1/auth",
+           params: {
+             email: "registere d@mail",
+             password: "password",
+             password_confirmation: "password",
+           },
+           headers: headers
+    end
+
+    it "is expected to respond with 422 status" do
+      expect(response).to have_http_status :unprocessable_entity
+    end
+
+    it "returns a unsuccesfully message" do
+      expect(response_json["errors"]["email"][0]).to eq "is not an email"
+    end
+  end
+
+  describe "Unsuccesfuly register - email already exists" do
+    let!(:user) { create(:user, email: "registered@mail.com") }
+    before do
+      post "/api/v1/auth",
+           params: {
+             email: "registered@mail.com",
+             password: "password",
+             password_confirmation: "password",
+           },
+           headers: headers
+    end
+
+    it "is expected to respond with 422 status" do
+      expect(response).to have_http_status :unprocessable_entity
+    end
+
+    it "returns a unsuccesfully message" do
+      expect(response_json["errors"]["full_messages"][0]).to eq "Email has already been taken"
+    end
+  end
 end
