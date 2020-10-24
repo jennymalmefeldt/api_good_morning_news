@@ -32,7 +32,7 @@ RSpec.describe "POST /api/v1/admin/sign_up", type: :request do
            headers: headers
     end
 
-    it "is expected to respond with 422 status" do
+    it "is expected to respond with unprocessable entity status" do
       expect(response).to have_http_status :unprocessable_entity
     end
 
@@ -52,7 +52,7 @@ RSpec.describe "POST /api/v1/admin/sign_up", type: :request do
            headers: headers
     end
 
-    it "is expected to respond with 422 status" do
+    it "is expected to respond with unprocessable entity status" do
       expect(response).to have_http_status :unprocessable_entity
     end
 
@@ -73,7 +73,7 @@ RSpec.describe "POST /api/v1/admin/sign_up", type: :request do
            headers: headers
     end
 
-    it "is expected to respond with 422 status" do
+    it "is expected to respond with unprocessable entity status" do
       expect(response).to have_http_status :unprocessable_entity
     end
 

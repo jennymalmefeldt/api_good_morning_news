@@ -14,7 +14,7 @@ entertainment_premium_article_1 = Article.create(
   premium: true,
   journalist_id: journalist.id,
 )
-file = URI.open("https://static2.bigstockphoto.com/3/0/2/large1500/203123227.jpg")
+file = URI.open("https://en.as.com/en/imagenes/2020/07/18/football/1595074795_129436_noticia_normal.jpg")
 entertainment_premium_article_1.image.attach(io: file, filename: "shock.jpg")
 entertainment_premium_article_2 = Article.create(
   title: "Traditional asian food",
@@ -24,7 +24,7 @@ entertainment_premium_article_2 = Article.create(
   premium: true,
   journalist_id: journalist.id,
 )
-file = URI.open("https://static2.bigstockphoto.com/3/0/2/large1500/203123227.jpg")
+file = URI.open("https://www.vvsupremo.com/wp-content/uploads/2015/11/900X570_Asian-Vegetarian-Quesadillas.jpg")
 entertainment_premium_article_2.image.attach(io: file, filename: "food.jpg")
 entertainment_free_article_1 = Article.create(
   title: "Home styling",
@@ -34,7 +34,7 @@ entertainment_free_article_1 = Article.create(
   premium: false,
   journalist_id: journalist.id,
 )
-file = URI.open("https://images.squarespace-cdn.com/content/v1/5710ae1f5559869411a05677/1519875637001-05PLA56JOENXOHL55GOS/ke17ZwdGBToddI8pDm48kFWxnDtCdRm2WA9rXcwtIYR7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1UcTSrQkGwCGRqSxozz07hWZrYGYYH8sg4qn8Lpf9k1pYMHPsat2_S1jaQY3SwdyaXg/_85A5200.jpg")
+file = URI.open("https://cdn.onekindesign.com/wp-content/uploads/2017/06/Modern-Living-Rooms-Forest-Views-21-1-Kindesign.jpg")
 entertainment_free_article_1.image.attach(io: file, filename: "styling.jpg")
 entertainment_free_article_2 = Article.create(
   title: "Skiing is great",
@@ -54,7 +54,7 @@ entertainment_free_unpublished_article_1 = Article.create(
   premium: false,
   journalist_id: journalist.id,
 )
-file = URI.open("https://static2.bigstockphoto.com/3/0/2/large1500/203123227.jpg")
+file = URI.open("https://www.ft.com/__origami/service/image/v2/images/raw/http://prod-upp-image-read.ft.com/e44d2dba-3ba0-11ea-b84f-a62c46f39bc2?source=next&fit=scale-down&quality=highest&width=1067")
 entertainment_free_unpublished_article_1.image.attach(io: file, filename: "king.jpg")
 news_premium_article_1 = Article.create(
   title: "Global warming",
@@ -134,7 +134,7 @@ business_free_article_1 = Article.create(
   premium: false,
   journalist_id: journalist.id,
 )
-file = URI.open("https://static2.bigstockphoto.com/3/0/2/large1500/203123227.jpg")
+file = URI.open("https://www.ft.com/__origami/service/image/v2/images/raw/http://prod-upp-image-read.ft.com/e44d2dba-3ba0-11ea-b84f-a62c46f39bc2?source=next&fit=scale-down&quality=highest&width=1067")
 business_free_article_1.image.attach(io: file, filename: "world.jpg")
 business_free_article_2 = Article.create(
   title: "Table company declining",
@@ -174,7 +174,7 @@ weather_premium_article_2 = Article.create(
   premium: true,
   journalist_id: journalist.id,
 )
-file = URI.open("https://impakter.com/wp-content/uploads/2018/09/weather.jpg")
+file = URI.open("https://i.ytimg.com/vi/M3zRXaGEQEA/hqdefault.jpg")
 weather_premium_article_2.image.attach(io: file, filename: "imperfections.jpg")
 weather_free_article_1 = Article.create(
   title: "Gyms Gyms Gyms",
@@ -186,8 +186,6 @@ weather_free_article_1 = Article.create(
 )
 file = URI.open("https://blogs.studyinsweden.se/wp-content/uploads/2014/12/EmptyName-10.jpg")
 weather_free_article_1.image.attach(io: file, filename: "gym.jpg")
-
-
 weather_free_article_2 = Article.create(
   title: "Wash new clothes",
   teaser: "Avoid the bed bugs",
@@ -226,7 +224,7 @@ sports_premium_article_2 = Article.create(
   premium: true,
   journalist_id: journalist.id,
 )
-file = URI.open("https://impakter.com/wp-content/uploads/2018/09/weather.jpg")
+file = URI.open("https://d2x51gyc4ptf2q.cloudfront.net/content/uploads/2020/08/01205322/Pierre-Emerick-Aubameyang-Arsenal-1.jpg")
 sports_premium_article_2.image.attach(io: file, filename: "gambling.jpg")
 sports_free_article_1 = Article.create(
   title: "Horse racing",
@@ -246,7 +244,7 @@ sports_free_article_2 = Article.create(
   premium: false,
   journalist_id: journalist.id,
 )
-file = URI.open("https://i2.wp.com/www.riksgymnasietgbg.se/wp-content/uploads/2019/10/bowling.jpg?fit=640%2C356&ssl=1")
+file = URI.open("https://en.as.com/en/imagenes/2020/07/18/football/1595074795_129436_noticia_normal.jpg")
 sports_free_article_2.image.attach(io: file, filename: "bowling.jpg")
 sports_free_unpublished_article_1 = Article.create(
   title: "Bad and unpublished",
