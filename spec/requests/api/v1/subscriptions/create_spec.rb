@@ -12,7 +12,7 @@ RSpec.describe "POST /api/v1/subscriptions", type: :request do
     stripe_helper.create_plan(
       id: "gold_subscription",
       amount: 10000,
-      currency: "sek",
+      currency: "usd",
       interval: "month",
       interval_count: 1,
       name: "Good Morning News",
